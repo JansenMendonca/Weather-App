@@ -1,68 +1,116 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Weather App
 
-In the project directory, you can run:
+This App was built to allow the user search for the real-time weather in any city in the world. It brings as result the 
+name of the city and country, the temperature and weather conditions.
 
-### `yarn start`
+## Motivation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The motivation for this project was to start working with React Hooks, and consume a useful and popular API was a good idea.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Tech/framework used
 
-### `yarn test`
+This App was built with:
+- React.js
+- React Hooks
+- Axios
+- OpenweatherMap API
+- Jest
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## The Code
 
-### `yarn build`
+The Code is divided in the following schema:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###Index.js component
+component that renders App.js inside the div with id=root on index.html
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+###App.js(inside components folder)
+App component is a function component with react hooks, and it does import and run 
+SearchBar.js,Location.js and WeatherBox.js components.
+SearchBar.js will have 3 props: search passing the search function to the children component,
+setQuery, passing the setQuery function from useState hooks, and query passing the		
+query term that the user will send through the input element.
+Location.js will pass two props, 'name' sending the weather.name, 
+and 'country' sending weather.sys.country to the component.
+Weatherbox.js will pass three props, 'mainTemp' sending weather.main.temp,
+'icon', sending weather.weather[0].icon as the image that will be shown on the
+result, and 'description' sending weather.weather[0].description, that will	
+be showing description of the weather on the city the user choose.
+the Component has a search arrow funch using async/await 
+syntax on the search, together with axios. This function
+receives an event from the input element, the function 
+will be called only when the user clicks on  Enter key.
+The if statement here will have 2 conditions, first query cannot be empty,
+second the e.key should be equals to 'Enter'.
+Confirming the Enter was clicked the input's value will be 
+set to the query via setQuery. The openWeatherMap component
+then will get the data related to that query from the API and
+return as 'data'.
+Now the search function will set 'weather' through setWeather.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###SearchBar.js(inside components folder)
+functional component with react hooks useState.It has an input element that will receive the city
+for which the user wants to know the weather information provided on this app.
 
-### `yarn eject`
+###Location.js(inside components folder)
+functional component that will be receiving the props and will return simple set of divs and
+span to return the city and country the user has searched.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+###WeatherBox.js(inside components folder)
+Functional component that after receive the props will be returning the 
+main temperature rounded up in metrics, also will return the icon related to the conditions
+and the description on the exact moment.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+###Index.css(inside components folder)
+css file that will be styling the app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+###openWeatherMap.js (inside api folder)
+Function with axios call.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Download the zip folder or git clone the https://github.com/JansenMendonca/Weather-App.git, 
+then navigate to the directory and just click `npm start`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API Reference
 
-### Code Splitting
+OpenWeatherMap API is a popular API that provides Current & Forecast weather data collection. Please visit it here: *https://openweathermap.org/api* 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Tests
 
-### Analyzing the Bundle Size
+### Unit Tests - Jest
+Unit tests were written with *jest* for each of the components. The details about it can be found below:
+- App.test.js: makes sure the App component renders without crashing;
+- Location.test.js: makes sure Location component renders without crashing;
+- WeatherBox.test.js: makes sure the Location component renders without crashing;
+- SearchBar.test.js: makes sure the SearchBar component renders properly.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+To run the unit tests just open the terminal under the project dir, and type `npm test` 
 
-### Making a Progressive Web App
+### Manual Tests
+Here I would like to suggest some scenarios for manual tests:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+**1st scenario**:
+***Given***  a user adds New York on the Search element
+***and*** the user clicks Enter button
+***then*** the app should return:
+City Name, Country abreviated;
+Temperature in Celsius;
+Icon related the weather conditions;
+Description text of the weather conditions.
 
-### Advanced Configuration
+**2nd scenario**:
+***Given*** the Search element is empty, only showing Search as placeholder
+***and*** the user clicks the Enter button
+***then*** no result should be shown ***and*** the App does not break ***and*** the Devtools console should not show any error.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `yarn build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+
