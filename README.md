@@ -24,7 +24,7 @@ The Code is divided in the following schema:
 ###Index.js component
 component that renders App.js inside the div with id=root on index.html
 
-###App.js(inside components folder)
+**App.js**(inside components folder)
 App component is a function component with react hooks, and it does import and run 
 SearchBar.js,Location.js and WeatherBox.js components.
 SearchBar.js will have 3 props: search passing the search function to the children component,
@@ -48,23 +48,23 @@ then will get the data related to that query from the API and
 return as 'data'.
 Now the search function will set 'weather' through setWeather.
 
-###SearchBar.js(inside components folder)
+**SearchBar.js**(inside components folder)
 functional component with react hooks useState.It has an input element that will receive the city
 for which the user wants to know the weather information provided on this app.
 
-###Location.js(inside components folder)
+**Location.js**(inside components folder)
 functional component that will be receiving the props and will return simple set of divs and
 span to return the city and country the user has searched.
 
-###WeatherBox.js(inside components folder)
+**WeatherBox.js**(inside components folder)
 Functional component that after receive the props will be returning the 
 main temperature rounded up in metrics, also will return the icon related to the conditions
 and the description on the exact moment.
 
-###Index.css(inside components folder)
+**Index.css**(inside components folder)
 css file that will be styling the app.
 
-###openWeatherMap.js (inside api folder)
+**openWeatherMap.js** (inside api folder)
 Function with axios call.
 
 
