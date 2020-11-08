@@ -21,7 +21,7 @@ This App was built with:
 
 The Code is divided in the following schema:
 
-###Index.js component
+**Index.js** component
 component that renders App.js inside the div with id=root on index.html
 
 **App.js**(inside components folder)
